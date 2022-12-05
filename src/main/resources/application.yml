@@ -1,0 +1,7 @@
+server:
+  port: 9099
+
+spring:
+  application:
+    name: AWS-SES-RND
+
