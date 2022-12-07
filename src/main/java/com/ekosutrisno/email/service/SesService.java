@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author Eko Sutrisno
@@ -41,7 +42,7 @@ public class SesService {
         }
     }
 
-    public void sendTemplatedEmail(String senderEmail, String receiverEmail, String templateName, TransactionalEmailData emailData) {
+    public void sendTemplatedEmail(String senderEmail, String receiverEmail, String templateName, Map<String, Object> emailData) {
         String templateData = null;
         try {
             templateData = this.objectMapper.writeValueAsString(emailData);

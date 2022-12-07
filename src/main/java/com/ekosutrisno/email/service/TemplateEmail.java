@@ -23,12 +23,13 @@ public class TemplateEmail {
             "<head>\n" +
             "  <meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\">\n" +
             "  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n" +
+            "  <link rel=\"preconnect\" href=\"https://fonts.googleapis.com\"><link rel=\"preconnect\" href=\"https://fonts.gstatic.com\" crossorigin><link href=\"https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap\" rel=\"stylesheet\">\n" +
             "  <title>Verify your login</title>\n" +
-            "  <!--[if mso]><style type=\"text/css\">body, table, td, a { font-family: Arial, Helvetica, sans-serif !important; }</style><![endif]-->\n" +
+            "  <!--[if mso]><style type=\"text/css\">body, table, td, a { font-family: 'Roboto', sans-serif !important; }</style><![endif]-->\n" +
             "</head>\n" +
-            "<body style=\"font-family: Helvetica, Arial, sans-serif; margin: 0px; padding: 0px; background-color: #ffffff;\">\n" +
+            "<body style=\"font-family: 'Roboto', sans-serif; margin: 0px; padding: 0px; background-color: #ffffff;\">\n" +
             "  <table role=\"presentation\"\n" +
-            "    style=\"width: 100%; border-collapse: collapse; border: 0px; border-spacing: 0px; font-family: Arial, Helvetica, sans-serif; background-color: rgb(239, 239, 239);\">\n" +
+            "    style=\"width: 100%; border-collapse: collapse; border: 0px; border-spacing: 0px; font-family: 'Roboto', sans-serif; background-color: rgb(239, 239, 239);\">\n" +
             "    <tbody>\n" +
             "      <tr>\n" +
             "        <td align=\"center\" style=\"padding: 1rem 2rem; vertical-align: top; width: 100%;\">\n" +
@@ -43,14 +44,14 @@ public class TemplateEmail {
             "                    <div style=\"color: rgb(0, 0, 0); text-align: left;\">\n" +
             "                      <h1 style=\"margin: 1rem 0\">Verification code</h1>\n" +
             "                      <p style=\"padding-bottom: 8px\">Hello <span style=\"font-weight: bold;\">{{firstName}}</span>, please use the verification code below to sign in.</p>\n" +
-            "                      <p style=\"padding-bottom: 8px\"><strong style=\"font-size: 130%\">764909</strong></p>\n" +
+            "                      <p style=\"padding-bottom: 8px\"><strong style=\"font-size: 130%\">{{pin}}</strong></p>\n" +
             "                      <p style=\"padding-bottom: 8px\">If you didn’t request this, you can ignore this email.</p>\n" +
             "                      <p style=\"padding-bottom: 8px\">Thanks,<br>The Briix team</p>\n" +
             "                    </div>\n" +
             "                  </div>\n" +
             "                  <div style=\"padding-top: 10px; color: rgb(153, 153, 153); text-align: center;\">\n" +
             "                    <p>Made with ♥ by Briix</p>\n" +
-            "                    <p class=\"content-block\" style=\"font-family: sans-serif; vertical-align: top; padding-bottom: 10px; color: #999999; font-size: 12px; text-align: center;\" valign=\"top\" align=\"center\">\n" +
+            "                    <p class=\"content-block\" style=\"font-family: 'Roboto', sans-serif; vertical-align: top; padding-bottom: 10px; color: #999999; font-size: 12px; text-align: center;\" valign=\"top\" align=\"center\">\n" +
             "                        <span class=\"apple-link\" style=\"color: #999999; font-size: 12px; text-align: center;\">PT Briix Financial Technology <br> Prosperity Tower 21st Floor, Unit I, District 8, SCBD Lot 28, <br> Jl. Jend. Sudirman Kav. 52 – 53, Jakarta 12190</span>\n" +
             "                        <br> Don't like these emails? <a href=\"http://i.imgur.com/CScmqnj.gif\" style=\"text-decoration: underline; color: #999999; font-size: 12px; text-align: center;\">Unsubscribe</a>.\n" +
             "                    </p>\n" +

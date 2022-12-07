@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.UUID;
 
 /**
@@ -32,10 +33,11 @@ public class SesController {
     public ResponseEntity<String> sendWithTemplate() {
         String uuid = UUID.randomUUID().toString();
         uuid = uuid.substring(uuid.length() - 6);
-        var data = TransactionalEmailData.builder()
-                .firstName("Eko Sutrisno")
-                .pin(uuid)
-                .build();
+
+        var data = new HashMap<String, Object>();
+        data.put("name", "Eko Sutrisno");
+        data.put("pin", uuid);
+
         sesService.sendTemplatedEmail("sutrisnoeko801@gmail.com", "ekosutrisno801@gmail.com", "OneTimePasswordTemplate", data);
         return ResponseEntity.ok("Templated Email Successfully Sent!");
     }
