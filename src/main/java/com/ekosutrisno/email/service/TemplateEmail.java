@@ -1,5 +1,7 @@
 package com.ekosutrisno.email.service;
 
+import java.util.Random;
+
 /**
  * @author Eko Sutrisno
  * Senin, 05/12/2022 14.49
@@ -43,7 +45,7 @@ public class TemplateEmail {
             "                  <div style=\"padding: 20px; background-color: rgb(255, 255, 255);\">\n" +
             "                    <div style=\"color: rgb(0, 0, 0); text-align: left;\">\n" +
             "                      <h1 style=\"margin: 1rem 0\">Verification code</h1>\n" +
-            "                      <p style=\"padding-bottom: 8px\">Hello <span style=\"font-weight: bold;\">{{firstName}}</span>, please use the verification code below to sign in.</p>\n" +
+            "                      <p style=\"padding-bottom: 8px\">Hello <span style=\"font-weight: bold;\">{{name}}</span>, please use the verification code below to sign in.</p>\n" +
             "                      <p style=\"padding-bottom: 8px\"><strong style=\"font-size: 130%\">{{pin}}</strong></p>\n" +
             "                      <p style=\"padding-bottom: 8px\">If you didn’t request this, you can ignore this email.</p>\n" +
             "                      <p style=\"padding-bottom: 8px\">Thanks,<br>The Briix team</p>\n" +
@@ -66,4 +68,14 @@ public class TemplateEmail {
             "  </table>\n" +
             "</body>\n" +
             "</html>";
+
+    public static String getRandomNumberString() {
+        // It will generate 6 digit random Number.
+        // from 0 to 999999
+        Random rnd = new Random();
+        int number = rnd.nextInt(999999);
+
+        // this will convert any number sequence into 6 character.
+        return String.format("%06d", number);
+    }
 }
