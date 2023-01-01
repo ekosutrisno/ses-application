@@ -6,6 +6,7 @@ import com.ekosutrisno.email.service.TemplateService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import reactor.core.publisher.Mono;
 
 import java.util.HashMap;
 
@@ -22,37 +23,37 @@ public class SesController {
     TemplateService templateService;
 
     @GetMapping
-    public ResponseEntity<String> sendSimpleEmail() {
+    public ResponseEntity<Mono<String>> sendSimpleEmail() {
         sesService.sendStandardEmail("sutrisnoeko801@gmail.com", "ekosutrisno801@gmail.com", "Hello, Welcome to Briix 😊");
-        return ResponseEntity.ok("Send Email Successfully!");
+        return ResponseEntity.ok(Mono.just("Send Email Successfully!"));
     }
 
     @PostMapping(path = "/send-with-template")
-    public ResponseEntity<String> sendWithTemplate() {
+    public ResponseEntity<Mono<String>> sendWithTemplate() {
         var data = new HashMap<String, Object>();
         data.put("name", "Eko Sutrisno");
         data.put("pin", TemplateEmail.getRandomNumberString());
 
         sesService.sendTemplatedEmail("sutrisnoeko801@gmail.com", "ekosutrisno801@gmail.com", "OneTimePasswordTemplate", data);
-        return ResponseEntity.ok("Templated Email Successfully Sent!");
+        return ResponseEntity.ok(Mono.just("Templated Email Successfully Sent!"));
     }
 
     @PostMapping(path = "/create-template")
-    public ResponseEntity<String> createTemplate() {
+    public ResponseEntity<Mono<String>> createTemplate() {
         templateService.createTemplate("OneTimePasswordTemplate", "Verification Code", TemplateEmail.otpEmail);
-        return ResponseEntity.ok("Template Email Successfully Created!");
+        return ResponseEntity.ok(Mono.just("Template Email Successfully Created!"));
     }
 
     @PostMapping(path = "/update-template")
-    public ResponseEntity<String> updateTemplate() {
+    public ResponseEntity<Mono<String>> updateTemplate() {
         templateService.updateTemplate("OneTimePasswordTemplate", " Briix Verification Code", TemplateEmail.otpEmail);
-        return ResponseEntity.ok("Template Email Successfully Updated!");
+        return ResponseEntity.ok(Mono.just("Template Email Successfully Updated!"));
     }
 
     @DeleteMapping(path = "/delete-template")
-    public ResponseEntity<String> deleteTemplate() {
+    public ResponseEntity<Mono<String>> deleteTemplate() {
         templateService.deleteTemplate("OneTimePasswordTemplate");
-        return ResponseEntity.ok("Templated Email Successfully Deleted!");
+        return ResponseEntity.ok(Mono.just("Templated Email Successfully Deleted!"));
     }
 
 }
