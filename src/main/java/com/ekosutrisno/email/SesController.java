@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Mono;
 
 import java.util.HashMap;
+import java.util.concurrent.CompletableFuture;
 
 /**
  * @author Eko Sutrisno
@@ -24,7 +25,7 @@ public class SesController {
 
     @GetMapping
     public ResponseEntity<Mono<String>> sendSimpleEmail() {
-        sesService.sendStandardEmail("sutrisnoeko801@gmail.com", "ekosutrisno801@gmail.com", "Hello, Welcome to Briix 😊");
+        CompletableFuture.runAsync(() -> sesService.sendStandardEmail("sutrisnoeko801@gmail.com", "ekosutrisno801@gmail.com", "Hello, Welcome to Briix 😊"));
         return ResponseEntity.ok(Mono.just("Send Email Successfully!"));
     }
 
@@ -34,7 +35,7 @@ public class SesController {
         data.put("name", "Eko Sutrisno");
         data.put("pin", TemplateEmail.getRandomNumberString());
 
-        sesService.sendTemplatedEmail("sutrisnoeko801@gmail.com", "ekosutrisno801@gmail.com", "OneTimePasswordTemplate", data);
+        CompletableFuture.runAsync(() -> sesService.sendTemplatedEmail("sutrisnoeko801@gmail.com", "ekosutrisno801@gmail.com", "OneTimePasswordTemplate", data));
         return ResponseEntity.ok(Mono.just("Templated Email Successfully Sent!"));
     }
 

@@ -5,6 +5,7 @@ import com.amazonaws.services.simpleemail.model.*;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -22,6 +23,7 @@ public class SesService {
     @Autowired
     public AmazonSimpleEmailService amazonSimpleEmailService;
 
+    @Async
     public void sendStandardEmail(String sender, String receiver, String subject) {
         String emailContent = TemplateEmail.defaultEmail;
         try {
@@ -42,6 +44,7 @@ public class SesService {
         }
     }
 
+    @Async
     public void sendTemplatedEmail(String senderEmail, String receiverEmail, String templateName, Map<String, Object> emailData) {
         String templateData = null;
         try {
